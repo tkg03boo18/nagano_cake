@@ -14,6 +14,12 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_mypage_path
   end
 
+  def unsubscribe
+  end
+
+  def withdraw
+  end
+
   private
 
   def customer_params

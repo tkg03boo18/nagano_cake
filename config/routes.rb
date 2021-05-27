@@ -13,16 +13,32 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update]
+    patch 'admin/orders/:order_id/order_details/:id' => 'admin/order_details#update', as: 'order_detail'
   end
   get 'admin' => 'admin/homes#top'
 
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'home#about'
+
     get 'customers/mypage' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
     put 'customers' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
+
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
+    resources :items, only: [:index, :show]
+
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
   end
 
 
