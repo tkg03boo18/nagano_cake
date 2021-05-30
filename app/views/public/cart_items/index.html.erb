@@ -1,0 +1,23 @@
+<h2>ショッピングカート</h2>
+<table>
+  <thead>
+		<tr>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @cart_items.each do |cart_item| %>
+	  <tr>
+	    <td><%= cart_item.item.name %></td>
+	    <td><%= cart_item.item.price %></td>
+	    <td>
+	      <%= number_field_tag "amount[#{cart_item.id}]", cart_item.amount, in: 1..10 %>
+	    </td>
+	    <td></td>
+	  </tr>
+	  <% end %>
+	</tbody>
+</table>
