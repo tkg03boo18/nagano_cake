@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.last_name+current_customer.first_name
     elsif params[:d_address] == "1"
-      @address = Address.find(params[:address_id])
+      @address = Address.find(params[:ad_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
@@ -23,13 +23,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.save
-    redirect_to orders_confirm_path
+    @cart_items = current_customer.cart_items.all
+     @cart_items.each do |cart_item|
+       @order_details = @order.order_details.new
+       @order_details.item_id = cart_item.item.id
+       @order_details.item.name = cart_item.item.name
+       @order_details.purchase_price = cart_item.item.price
+       @order_details.amount = cart_item.amount
+       @order_details.save
+       current_customer.cart_items.destroy_all
+     end
+    redirect_to orders_thanks_path
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show

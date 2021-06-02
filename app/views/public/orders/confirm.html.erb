@@ -14,7 +14,7 @@
             <td><%= cart_item.item.name %></td>
             <td><%= addTax(cart_item.item.price) %></td>
             <td><%= cart_item.amount %></td>
-            <td></td>
+            <td><%= addTax(cart_item.item.price)*cart_item.amount %></td>
         </tr>
         <% end %>
     </tbody>
@@ -28,6 +28,12 @@
     <%= @order.address %>
     <%= @order.name %>
 </label>
-
-<%= link_to "注文を確定する", orders_thanks_path %>
+<%= form_with model: @order, url: orders_path, local:true do |f| %>
+<%= f.hidden_field :customer_id, :value => current_customer.id %>
+<%= f.hidden_field :payment_method %>
+<%= f.hidden_field :postal_code %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :name %>
+<%= f.submit "注文を確定する" %>
+<% end %>
 

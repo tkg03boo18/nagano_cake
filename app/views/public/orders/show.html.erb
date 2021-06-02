@@ -1,0 +1,45 @@
+<h2>注文履歴詳細</h2>
+
+<h4>注文情報</h4>
+<div>
+  <label>
+    注文日 <%= @order.created_at.strftime('%Y/%m/%d') %>
+  </label>
+</div>
+<div>
+  <label>
+    配送先 <%= @order.postal_code %><%= @order.address %><%= @order.name %>
+  </label>
+</div>
+<div>
+  <label>
+    支払方法 <%= @order.payment_method %>
+  </label>
+</div>
+<div>
+  <label>
+    ステータス
+  </label>
+</div>
+
+<h4>注文内容</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_details.each do |detail| %>
+    <tr>
+      <td><%= detail.item.name %></td>
+      <td><%= addTax(detail.purchase_price) %></td>
+      <td><%= detail.amount %></td>
+      <td><%= addTax(detail.purchase_price)*detail.amount %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

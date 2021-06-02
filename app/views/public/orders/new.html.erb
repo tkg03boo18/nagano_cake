@@ -26,7 +26,7 @@
     <label>
       <%= radio_button_tag :d_address, 1 %>
       登録済住所から選択
-      <%= select_tag 'address_id', options_from_collection_for_select(Address.all, :id, :pan) %>
+      <%= select_tag 'ad_id', options_from_collection_for_select(Address.all, :id, :pan) %>
     </label>
   </div>
   <div class="delivery_address">
