@@ -1,6 +1,10 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      @total_price += cart_item.item.price*cart_item.amount
+    end
   end
 
   def update
@@ -20,7 +24,12 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.save
+    cart_item = current_customer.cart_items.where(item_id: @cart_item.item_id)
+    if cart_item.exists?
+      cart_item.update(amount: cart_item.first.amount+@cart_item.amount)
+    else
+      @cart_item.save
+    end
     redirect_to cart_items_path
   end
 

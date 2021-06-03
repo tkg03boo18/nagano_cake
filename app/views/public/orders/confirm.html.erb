@@ -28,12 +28,22 @@
     <%= @order.address %>
     <%= @order.name %>
 </label>
+<label>
+    送料 : <%= @order.delivery_charge %>
+</label>
+<label>
+    商品合計 : <%= addTax(@total_price) %>
+</label>
+<label>
+    請求金額 : <%= sumprice(@total_price,@order.delivery_charge) %>
+</label>
 <%= form_with model: @order, url: orders_path, local:true do |f| %>
 <%= f.hidden_field :customer_id, :value => current_customer.id %>
 <%= f.hidden_field :payment_method %>
 <%= f.hidden_field :postal_code %>
 <%= f.hidden_field :address %>
 <%= f.hidden_field :name %>
+<%= f.hidden_field :total_payment, :value => sumprice(@total_price,@order.delivery_charge) %>
 <%= f.submit "注文を確定する" %>
 <% end %>
 

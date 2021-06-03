@@ -15,7 +15,12 @@
 	    <td><%= cart_item.item.name %></td>
 	    <td><%= addTax(cart_item.item.price) %></td>
 	    <td>
-	      <%= number_field_tag "amount[#{cart_item.id}]", cart_item.amount, in: 1..10 %>
+	    	<%= form_with model: cart_item, url: cart_item_path(cart_item), local:true do |f| %>
+	    	<%= f.hidden_field :customer_id, :value => current_customer.id %>
+	    	<%= f.hidden_field :item_id %>
+	    	<%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+	    	<%= f.submit "変更" %>
+	    	<% end %>
 	    </td>
 	    <td><%= addTax(cart_item.item.price)*cart_item.amount %></td>
 	    <td></td>
@@ -25,7 +30,7 @@
 </table>
 <div>
 	<label>
-		合計金額 : 
+		合計金額 : <%= addTax(@total_price) %>
 	</label>
 </div>
 <%= link_to "買い物を続ける", items_path %>

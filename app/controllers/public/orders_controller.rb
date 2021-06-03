@@ -16,7 +16,13 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
     else params[:d_address] == "2"
     end
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      @total_price += cart_item.item.price*cart_item.amount
+    end
+    @order.delivery_charge = 800
+    # @order.total_payment = @total_price+@order.delivery_charge
   end
 
   def thanks
