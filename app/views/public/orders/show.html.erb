@@ -33,7 +33,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @order.order_details.each do |detail| %>
+    <% @order_details.each do |detail| %>
     <tr>
       <td><%= detail.item.name %></td>
       <td><%= addTax(detail.purchase_price) %></td>
@@ -43,3 +43,14 @@
     <% end %>
   </tbody>
 </table>
+<div>
+  <label>
+    送料 : <%= @order.delivery_charge %>
+　</label>
+　<label>
+    商品合計 : <%= addTax(@total_price) %>
+　</label>
+　<label>
+    請求金額 : <%= @order.total_payment %>
+　</label>
+</div>

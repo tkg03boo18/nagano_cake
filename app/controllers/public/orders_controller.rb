@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
       @total_price += cart_item.item.price*cart_item.amount
     end
     @order.delivery_charge = 800
-    # @order.total_payment = @total_price+@order.delivery_charge
+
   end
 
   def thanks
@@ -50,6 +50,12 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order.delivery_charge = 800
+    @order_details = @order.order_details
+    @total_price = 0
+    @order_details.each do |detail|
+      @total_price += detail.purchase_price*detail.amount
+    end
   end
 
   private
