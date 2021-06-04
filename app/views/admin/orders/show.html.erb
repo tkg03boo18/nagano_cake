@@ -4,7 +4,12 @@
   <p>注文日 : <%= @order.created_at.strftime('%Y/%m/%d') %></p>
   <p>配送先 : <%= @order.address %></p>
   <p>支払方法 : <%= @order.payment_method %></p>
-  <p>注文ステータス : </p>
+  <p>注文ステータス :
+  <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
+  <%= f.select :status, {入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済: 4} %>
+  <%= f.submit "更新" %>
+  <% end %>
+  </p>
 </div>
 <h4>注文内容</h4>
 <table>

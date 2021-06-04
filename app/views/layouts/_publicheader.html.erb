@@ -1,5 +1,8 @@
 <% if customer_signed_in? %>
 <li>
+  ようこそ、<%= current_customer.last_name %> さん！
+</li>
+<li>
   <%= link_to " マイページ ", customers_mypage_path %>
 </li>
 <li>
