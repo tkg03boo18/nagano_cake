@@ -14,4 +14,4 @@
             	      <% end %>
 </p>
 <%= link_to "編集する", edit_admin_customer_path(@customer) %>
-<%= link_to "注文履歴一覧を見る", admin_path %>
+<%= link_to "注文履歴一覧を見る", admin_path(order_sort: 0, customer_id: @customer.id) %>
