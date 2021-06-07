@@ -3,28 +3,44 @@
   ようこそ、<%= current_customer.last_name %> さん！
 </li>
 <li>
-  <%= link_to " マイページ ", customers_mypage_path %>
+  <%= link_to customers_mypage_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">マイページ</button>
+ <% end %>
 </li>
 <li>
-  <%= link_to " 商品一覧 ", items_path %>
+  <%= link_to items_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">商品一覧</button>
+ <% end %>
 </li>
 <li>
-  <%= link_to " カート ", cart_items_path %>
+  <%= link_to cart_items_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">カート</button>
+ <% end %>
 </li>
 <li>
-  <%= link_to " ログアウト ", destroy_customer_session_path, method: :delete %>
+  <%= link_to destroy_customer_session_path, method: :delete do %>
+  <button type="button" class="btn btn-outline-secondary m-2">ログアウト</button>
+ <% end %>
 </li>
 <% else %>
 <li>
-  <%= link_to " About ", about_path %>
+  <%= link_to about_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">About</button>
+ <% end %>
 </li>
 <li>
-  <%= link_to " 商品一覧 ", items_path %>
+  <%= link_to items_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">商品一覧</button>
+ <% end %>
 </li>
 <li>
-  <%= link_to " 新規登録 ", new_customer_registration_path %>
+  <%= link_to new_customer_registration_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">新規登録</button>
+ <% end %>
 </li>
 <li>
-  <%= link_to " ログイン ", new_customer_session_path %>
+  <%= link_to new_customer_session_path do %>
+  <button type="button" class="btn btn-outline-secondary m-2">ログイン</button>
+ <% end %>
 </li>
 <% end %>
