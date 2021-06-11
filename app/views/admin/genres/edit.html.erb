@@ -8,7 +8,7 @@
 	  <%= form_with model: [:admin, @genre], local:true do |f| %>
     <div class="form-inline">
       <label for="inputgenre" class="my-4 mr-5 ml-4 col-form-label">ジャンル名</label>
-      <%= f.text_field :name, class: "form-controll my-4 mr-5", placeholder: "ジャンル名" %>
+      <%= f.text_field :name, class: "form-control my-4 mr-5", placeholder: "ジャンル名" %>
       <%= f.submit '変更を保存', class: "btn btn-success my-4" %>
     </div>
     <% end %>

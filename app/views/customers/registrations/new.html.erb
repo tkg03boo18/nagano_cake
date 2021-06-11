@@ -12,58 +12,58 @@
 	    	<label for="inputName" class="col-sm-2 small col-form-label">名前</label>
 	      <label for="inputLastName" class="col-sm-1 col-form-label small">(姓)</label>
 	      <div class="col-sm-3">
-	      	<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-controll", placeholder: "姓" %>
+	      	<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "姓" %>
 	      </div>
 	      <label for="inputLastName" class="col-sm-1 col-form-label small">(名)</label>
 	      <div class="col-sm-3">
-	      	 <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-controll", placeholder: "名" %>
+	      	 <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "名" %>
 	      </div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputNameKana" class="col-sm-2 col-form-label small">フリガナ</label>
 	      <label for="inputLastNameKana" class="col-sm-1 col-form-label small">(セイ)</label>
 	      <div class="col-sm-3">
-	      	<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "form-controll", placeholder: "セイ" %>
+	      	<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "form-control", placeholder: "セイ" %>
 	      </div>
 	      <label for="inputLastNameKana" class="col-sm-1 col-form-label small">(メイ)</label>
 	      <div class="col-sm-3">
-	      	 <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "form-controll", placeholder: "メイ" %>
+	      	 <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "form-control", placeholder: "メイ" %>
 	      </div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputEmail" class="col-sm-3 col-form-label small">メールアドレス</label>
 	    	<div class="col-sm-9">
-	    		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-controll", placeholder: "sample@example.com" %>
+	    		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "sample@example.com" %>
 	    	</div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputPostalCode" class="col-sm-3 col-form-label small">郵便番号(ハイフンなし)</label>
 	    	<div class="col-sm-9">
-	    		<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-controll", placeholder: "0000000" %>
+	    		<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control", placeholder: "0000000" %>
 	    	</div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputAddress" class="col-sm-3 col-form-label small">住所</label>
 	    	<div class="col-sm-9">
-	    		<%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-controll w-75", placeholder: "東京都渋谷区代々木神園町0-0" %>
+	    		<%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control w-75", placeholder: "東京都渋谷区代々木神園町0-0" %>
 	    	</div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputTelephoneNumber" class="col-sm-3 col-form-label small">電話番号</label>
 	    	<div class="col-sm-9">
-	    		<%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class: "form-controll", placeholder: "0000000000" %>
+	    		<%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class: "form-control", placeholder: "0000000000" %>
 	    	</div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputPassword" class="col-sm-3 col-form-label small">パスワード(6文字以上)</label>
 	    	<div class="col-sm-9">
-	    		<%= f.password_field :password, autocomplete: "new-password", class: "form-controll" %>
+	    		<%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
 	    	</div>
 	    </div>
 	    <div class="form-group row">
 	    	<label for="inputPasswordConfirmation" class="col-sm-3 col-form-label small">パスワード(確認用)</label>
 	    	<div class="col-sm-9">
-	    		<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-controll" %>
+	    		<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
 	    	</div>
 	    </div>
 	    <div class="form-group row">
