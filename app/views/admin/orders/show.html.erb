@@ -1,52 +1,91 @@
-<h2>注文履歴詳細</h2>
-<div>
-  <p>購入者 : <%= @order.customer.last_name %><%= @order.customer.first_name %></p>
-  <p>注文日 : <%= @order.created_at.strftime('%Y/%m/%d') %></p>
-  <p>配送先 : <%= @order.address %></p>
-  <p>支払方法 : <%= @order.payment_method %></p>
-  <p>注文ステータス :
-  <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
-  <%= f.select :status, {入金待ち: "入金待ち", 入金確認: "入金確認", 製作中: "製作中", 発送準備中: "発送準備中", 発送済: "発送済"} %>
-  <%= f.submit "更新" %>
-  <% end %>
-  </p>
-</div>
-<h4>注文内容</h4>
-<table>
-  <thead>
-    <tr>
-      <th>商品</th>
-      <th>単価（税込）</th>
-      <th>個数</th>
-      <th>小計</th>
-      <th>製作ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @order_details.each do |detail| %>
-    <tr>
-      <td><%= detail.item.name %></td>
-      <td><%= addTax(detail.purchase_price) %></td>
-      <td><%= detail.amount %></td>
-      <td><%= addTax(detail.purchase_price)*detail.amount %></td>
-      <td>
-        <%= form_with model: detail, url: admin_order_detail_path(detail), local:true do |f| %>
-        <%= f.select :making_status, {製作不可: "製作不可", 製作待ち: "製作待ち", 製作中: "制作中", 製作完了: "製作完了"} %>
-        <%= f.submit "更新" %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<div>
-  <label>
-    送料 : <%= @order.delivery_charge %>
-　</label>
-　<label>
-    商品合計 : <%= addTax(@total_price) %>
-　</label>
-　<label>
-    請求金額 : <%= @order.total_payment %>
-　</label>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3 offset-sm-1 my-4">
+			<h4 class="text-center bg-light">注文履歴詳細</h4>
+		</div>
+	</div>
+	<div class="row">
+	  <div class="col-sm-12 my-2">
+	    <table class="table table-borderless col-sm-10">
+	      <tr>
+	        <th class="col-sm-2">購入者</th>
+	        <td class="col-sm-6"><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+	      </tr>
+	      <tr>
+	        <th class="col-sm-2">注文日</th>
+	        <td class="col-sm-6"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+	      </tr>
+	      <tr>
+	        <th class="col-sm-2">配送先</th>
+	        <td class="col-sm-6"><%= @order.address %></td>
+	      </tr>
+	      <tr>
+	        <th class="col-sm-2">支払方法</th>
+	        <td class="col-sm-6"><%= @order.payment_method %></td>
+	      </tr>
+	      <tr>
+	        <th class="col-sm-2">注文ステータス</th>
+	        <td class="col-sm-6">
+	          <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
+	          <div class="form-group row">
+	            <%= f.select :status, {入金待ち: "入金待ち", 入金確認: "入金確認", 製作中: "製作中", 発送準備中: "発送準備中", 発送済: "発送済"}, {}, class: "form-control w-25 ml-2"%>
+              <%= f.submit "更新", class: "btn btn-success offset-sm-1" %>
+            </div>
+            <% end %>
+	        </td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-sm-8">
+	    <table class="table table-bordered">
+	      <thead class="thead-light">
+	        <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+	      </thead>
+	      <tbody>
+          <% @order_details.each do |detail| %>
+          <tr>
+            <td><%= detail.item.name %></td>
+            <td><%= addTax(detail.purchase_price) %></td>
+            <td><%= detail.amount %></td>
+            <td><%= addTax(detail.purchase_price)*detail.amount %></td>
+            <td>
+              <%= form_with model: detail, url: admin_order_detail_path(detail), local:true do |f| %>
+              <div class="form-group row">
+                <%= f.select :making_status, {製作不可: "製作不可", 製作待ち: "製作待ち", 製作中: "制作中", 製作完了: "製作完了"}, {}, class: "form-control w-50 ml-3 mr-1" %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              </div>
+
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+	    </table>
+
+	  </div>
+	  <div class="col-sm-3 offset-sm-1">
+	    <table class="table table-borderless">
+	      <tr>
+	        <th>送料</th>
+	        <td><%= @order.delivery_charge %></td>
+	      </tr>
+	      <tr>
+	        <th>商品合計</th>
+	        <td><%= addTax(@total_price) %></td>
+	      </tr>
+	      <tr>
+	        <th>請求金額</th>
+	        <td><%= @order.total_payment %></td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
 </div>
