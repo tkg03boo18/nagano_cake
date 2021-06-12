@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-  	<div class="col-sm-10 offset-sm-1">
+  	<div class="col-sm-9 offset-sm-2">
   		<div class="row">
-  			<div class="col-sm-3 my-4">
-         <h4 class="text-center bg-light">商品一覧</h4>
+  			<div class="col-sm-4 mt-4 mb-2">
+         <div class="h4 font-weight">商品一覧 <span class="small">(全<%= @items.count %>件)</span></div>
         </div>
   		</div>
   		<div class="row">
   			<% @items.each do |item| %>
-				<table class="table-borderless col-sm-2 mx-4 mt-2">
+				<table class="table-borderless col-sm-2 mx-3 mt-2 mb-3">
 					<tr>
 						<th></th>
 						<td>
@@ -23,11 +23,14 @@
 					</tr>
 					<tr>
 						<th></th>
-						<td><%= item.price %></td>
+						<td>¥<%= item.price %></td>
 					</tr>
 				</table>
 				<% end %>
   		</div>
+			<div class="col-sm-4 offset-sm-4 mt-4">
+				<%= paginate @items %>
+			</div>
   	</div>
   </div>
 </div>

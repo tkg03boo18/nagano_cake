@@ -34,11 +34,15 @@
 					</tr>
 					<tr>
 						<th></th>
-						<td><%= item.price %></td>
+						<td>¥<%= item.price %></td>
 					</tr>
 				</table>
 				<% end %>
+				<% paginate @items %>
 			</div>
+  	</div>
+  	<div class="col-sm-2 offset-sm-8 mt-2">
+  		<%= link_to "全ての商品を見る>", items_path %>
   	</div>
   </div>
 

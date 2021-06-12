@@ -38,19 +38,19 @@
     <table class="table table-bordered col-sm-8 mt-4">
       <thead class="thead-light">
         <tr>
-          <th class="col-sm-1">郵便番号</th>
-          <th class="col-sm-3">住所</th>
+          <th class="col-sm-2">郵便番号</th>
+          <th class="col-sm-4">住所</th>
           <th class="col-sm-2">宛名</th>
-          <th class="col-sm-3"></th>
+          <th class="col-sm-4"></th>
         </tr>
       </thead>
       <tbody>
         <% @addresses.each do |address| %>
         <tr>
-          <td class="col-sm-1"><%= address.postal_code %></td>
-          <td class="col-sm-3"><%= address.address %></td>
+          <td class="col-sm-2"><%= address.postal_code %></td>
+          <td class="col-sm-4"><%= address.address %></td>
           <td class="col-sm-2"><%= address.name %></td>
-          <td class="col-sm-3">
+          <td class="col-sm-4">
             <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
             <%= link_to "削除する", address_path(address), method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger" %>
           </td>
