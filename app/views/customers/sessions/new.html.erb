@@ -10,7 +10,9 @@
     </div>
 
     <div class="col-sm-7 offset-sm-3">
-      <%= flash[:error] %>
+      <p class="text-danger">
+        <%= flash[:error] %>
+      </p>
       <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
       <div class="form-group row">
         <label for="inputEmail" class="col-sm-3 col-form-label">メールアドレス</label>

@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="border">
     <% if admin_signed_in? %>
      <%= render 'layouts/adminheader' %>
     <% else %>
@@ -21,6 +21,9 @@
     <main>
      <%= yield %>
     </main>
+    <footer>
+
+    </footer>
 
   </body>
 </html>

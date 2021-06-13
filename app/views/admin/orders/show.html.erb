@@ -57,9 +57,9 @@
             <td><%= detail.amount %></td>
             <td><%= addTax(detail.purchase_price)*detail.amount %></td>
             <td>
-              <%= form_with model: detail, url: admin_order_detail_path(detail), local:true do |f| %>
+              <%= form_with model: detail, url: admin_order_detail_path(@order,detail), local:true do |f| %>
               <div class="form-group row">
-                <%= f.select :making_status, {製作不可: "製作不可", 製作待ち: "製作待ち", 製作中: "制作中", 製作完了: "製作完了"}, {}, class: "form-control w-50 ml-3 mr-1" %>
+                <%= f.select :making_status, {製作不可: "製作不可", 製作待ち: "製作待ち", 製作中: "製作中", 製作完了: "製作完了"}, {}, class: "form-control w-50 ml-3 mr-1" %>
                 <%= f.submit "更新", class: "btn btn-success" %>
               </div>
 

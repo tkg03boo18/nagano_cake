@@ -12,12 +12,18 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
+    if @order.status == "入金確認"
+      @order.order_details.each do |detail|
+        detail.update(making_status: "製作待ち")
+      end
+    end
     redirect_to admin_order_path
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :delivery_charge, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:status)
   end
+
 end
